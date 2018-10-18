@@ -29,7 +29,7 @@ contract MessageExchange {
     }
     
     function addFriend(address requestReceiver) public onlyMember{
-        require (requestReceiver != msg.sender, "Not add itself like friend");
+        require (requestReceiver != msg.sender, "You can not add yourself");
         relations[msg.sender][requestReceiver]=Relationship.Pending;
         relations[requestReceiver][msg.sender]=Relationship.Pending;
         emit requestSent(msg.sender,requestReceiver);
@@ -47,12 +47,11 @@ contract MessageExchange {
         require (relations[msg.sender][requestSender]==Relationship.Pending);
         require (relations[requestSender][msg.sender]==Relationship.Pending);
         relations[msg.sender][requestSender]=Relationship.Unknown;
-        relations[requestSender][msg.sender]=Relationship.Friend;
+        relations[requestSender][msg.sender]=Relationship.Unknown;
         emit userRejected(msg.sender,requestSender); 
     }
     
     function sendMessage(bytes32 message , address receiver) public onlyMember{
-        require(receiver!= msg.sender);
         require (relations[msg.sender][receiver]==Relationship.Friend);
         require (relations[receiver][msg.sender]==Relationship.Friend);
         users[receiver].msgcount+=1;
