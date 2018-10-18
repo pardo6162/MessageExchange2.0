@@ -195,3 +195,25 @@ var messageContract = web3.eth.contract([
 ]);
 var contract = messageContract.at(0x64c46452a997f397d1873dbaff05215d9c5f2eaf);
 console.log(contract);
+
+var messageSend = contract.ReceiveMessage({},'latest');
+
+messageSend.watch(function(error, result){
+    if (!error){
+        $("#loader").hide();
+        $("#Message").html('msgid '+result.args.msgid + '\n from '+result.args.from+ '\n to '+result.args.to+ '\n msgtext '+web3.toAscii(result.args.msgtext));
+                } else {
+                    $("#dloader").hide();
+                    console.log(error);
+                }
+});
+
+$("#button").click(function() {
+	 $("#loader").show();
+    contract.sendMessage($("#address").val(), $("#message").val(),(err, res) => {
+        if (err) {
+        	console.log(err);
+            $("#loader").hide();
+        }
+	});
+})
