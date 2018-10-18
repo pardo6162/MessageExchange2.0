@@ -193,5 +193,5 @@ var messageContract = web3.eth.contract([
 		"type": "function"
 	}
 ]);
-var contract = messageContract.at();
+var contract = messageContract.at(0x64c46452a997f397d1873dbaff05215d9c5f2eaf);
 console.log(contract);
