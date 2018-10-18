@@ -1,0 +1,25 @@
+{
+  "name": "ethereumdapp",
+  "version": "1.0.0",
+  "description": "Message Exchange",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fardila1011/MessageExchange2.0.git"
+  },
+  "keywords": [
+    "message"
+  ],
+  "author": "Felipe Pardo & Fabian Ardila",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fardila1011/MessageExchange2.0/issues"
+  },
+  "homepage": "https://github.com/fardila1011/MessageExchange2.0#readme",
+  "dependencies": {
+    "web3": "github:ethereum/web3.js"
+  }
+}
